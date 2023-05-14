@@ -16,4 +16,15 @@ const config: Options = {
 
 const sequelize = new Sequelize(config)
 
+// async function showAllSchemas() {
+//     const schemas = await sequelize.showAllSchemas({});
+//     console.log(schemas);
+//     const data = await sequelize.getQueryInterface().showAllTables()
+//     console.log(data)
+//     const teste = await sequelize.query('Select * from packs', { type: QueryTypes.SELECT })
+//     console.log(teste)
+//   }
+
+//   showAllSchemas()
+
 export default sequelize;
