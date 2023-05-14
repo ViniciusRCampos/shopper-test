@@ -1,0 +1,25 @@
+{
+  "name": "api",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.ts",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start:dev": "npx nodemon",
+    "db:reset": "docker-compose exec db mysql -u root -p123456 shopper_db < ./docker-entrypoint-initdb.d/database.sql"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/node": "^20.1.4",
+    "nodemon": "^2.0.22",
+    "ts-node": "^10.9.1",
+    "typescript": "^5.0.4",
+    "eslint-config-trybe-backend": "1.0.4"
+  },
+  "dependencies": {
+    "express": "^4.18.2",
+    "mysql2": "^3.3.1"
+  }
+}
