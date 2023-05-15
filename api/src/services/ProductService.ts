@@ -31,7 +31,7 @@ export default class ProductService implements IServiceProduct{
           if(data === null){
             result.push({code: product.product_code, name: '',
               costPrice: 0, salesPrice: 0, newPrice: product.new_price,
-              error: 'Produto não encontrado!'})
+              error: 'Produto não encontrado'})
           }
           if (data) {
             const validation = await rulesValidations(data, product.new_price, products)
