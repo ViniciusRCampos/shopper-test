@@ -5,7 +5,7 @@ import PackService from "../services/PackService";
 
 function priceValidation(result: IProducts, new_price: number): IProducts | null {
     result.newPrice = new_price
-    if (result.costPrice >= new_price) {
+    if (result.costPrice >= new_price || result.costPrice === new_price) {
         result.error = 'O preço é menor do que o custo'
         return result
     }
@@ -30,7 +30,7 @@ export async function packValidation(result: IProducts): Promise<number[]> {
    const pack = new PackService();
    const isPack = await pack.findByPackId(result.code)
    const isProductOfPack = await pack.findByProductId(result.code)
-   if (isPack){
+   if (isPack && isPack?.length > 0){
         const data: number[] = []
         isPack.map((element) => {
             data.push(element.productId)
@@ -38,7 +38,8 @@ export async function packValidation(result: IProducts): Promise<number[]> {
         return data
    }
    if (isProductOfPack){
-    const data: number[] = [isProductOfPack.productId]
+    const data: number[] = [isProductOfPack.dataValues.packId]
+    console.log(data, 'isproductofpack')
     return data
    }
    return []
@@ -51,13 +52,13 @@ export function isPackComplete(
         (product) => product.product_code === id));
   }
 
-export function validations(result: IProducts, new_price: number): IProducts{
+export function validations(result: IProducts, new_price: number): IProducts | null{
     const adjustment = adjustmentValidation(result, new_price)
     if(!adjustment){
         const price = priceValidation (result, new_price)
         if(!price){
             result.newPrice = new_price
-            return result
+            return null
         }
         return price
     }

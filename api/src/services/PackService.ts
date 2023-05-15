@@ -14,7 +14,4 @@ export default class PackService implements IServicePack{
         return result
     
     }
-    updateByPackId(packId: number): Promise<Pack | null> {
-        throw new Error('Method not implemented.');
-    }
 }

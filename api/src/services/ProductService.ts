@@ -11,6 +11,7 @@ export default class ProductService implements IServiceProduct{
         const result = await this.model.findAll()
         return result
     }
+
     async updateById(products: IProducts[]): Promise<Product[] | null | any[]> {
         products.map(async (product) => {
           await this.model.update({salesPrice: product.newPrice}, {where:{code: product.code}})
