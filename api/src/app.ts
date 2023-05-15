@@ -1,20 +1,36 @@
-const express = require('express');
-import connection from './database/config/config'
-import productRoute from './routes/ProductRoutes'
+import express from 'express';
+import productRoute from './routes/ProductRoutes';
+import packRoute from './routes/PackRoutes';
+// Vinicius Campos
 
-const con = connection
+class App {
+  public app: express.Express;
 
-con.connect ((err: any) => 
-    {
-    if (err) {
-        console.log (err)
-    }
-    else
-    {
-        console.log (`connection successful`)
-        const app = express();
+  constructor() {
+    this.app = express();
+    this.config();
 
-        app.use(productRoute)
-        app.listen (3001,() => console.log('server listening on port 3001'));
-    }
-})
+    // Não remover essa rota
+    this.app.get('/', (req, res) => res.json({ ok: true }));
+  }
+
+  private config():void {
+    const accessControl: express.RequestHandler = (_req, res, next) => {
+      res.header('Access-Control-Allow-Origin', '*');
+      res.header('Access-Control-Allow-Methods', 'GET,POST,DELETE,OPTIONS,PUT,PATCH');
+      res.header('Access-Control-Allow-Headers', '*');
+      next();
+    };
+
+    this.app.use(express.json());
+    this.app.use(accessControl);
+    this.app.use(productRoute)
+    this.app.use(packRoute)
+  }
+
+  public start(PORT: string | number):void {
+    this.app.listen(PORT, () => console.log(`Running on port ${PORT}`));
+  }
+}
+
+export { App };

@@ -43,3 +43,5 @@ Pack.init(
         timestamps: false,
       }
     );
+
+export default Pack

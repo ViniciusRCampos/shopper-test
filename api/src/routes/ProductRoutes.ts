@@ -10,4 +10,8 @@ productRoute.get('/products', (req: Request, res: Response) => {
     productController.readAll(req,res)
 })
 
+productRoute.post('/products', (req: Request, res: Response) => {
+    productController.validateData(req,res)
+})
+
 export default productRoute
