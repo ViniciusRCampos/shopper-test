@@ -14,6 +14,7 @@ export default class ProductController {
     }
 
     async validateData(req: Request, res: Response){
+        console.log(req.body)
         const result = await this._service.validateCSV(req.body)
         res.status(201).json(result)
     }

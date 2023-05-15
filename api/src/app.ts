@@ -1,6 +1,7 @@
 import express from 'express';
 import productRoute from './routes/ProductRoutes';
 import packRoute from './routes/PackRoutes';
+import cors from 'cors';
 // Vinicius Campos
 
 class App {
@@ -23,9 +24,12 @@ class App {
     };
 
     this.app.use(express.json());
+    this.app.use(cors({
+      origin: '*', 
+    }));
     this.app.use(accessControl);
-    this.app.use(productRoute)
-    this.app.use(packRoute)
+    this.app.use(productRoute);
+    this.app.use(packRoute);
   }
 
   public start(PORT: string | number):void {

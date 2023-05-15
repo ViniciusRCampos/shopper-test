@@ -5,7 +5,7 @@ import PackService from "../services/PackService";
 
 function priceValidation(result: IProducts, new_price: number): IProducts | null {
     result.newPrice = new_price
-    if (result.costPrice <= new_price) {
+    if (result.costPrice >= new_price) {
         result.error = 'O preço é menor do que o custo'
         return result
     }
