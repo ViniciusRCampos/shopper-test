@@ -8,7 +8,6 @@ const productRoute = Router();
 const productService = new ProductService();
 const productController = new ProductController(productService);
 const upload = multer({ dest: 'uploads/' })
-import * as fs from 'fs';
 
 productRoute.get('/products',  (req: Request, res: Response) => {
     productController.readAll(req,res)
@@ -35,6 +34,10 @@ productRoute.post('/products', upload.single('file'),async (req: Request, res: R
     await deleteFile(file.path)
   }
     productController.validateData(req,res)
+})
+
+productRoute.post('/products/update',  (req: Request, res: Response) => {
+  productController.updateProduct(req,res)
 })
 
 export default productRoute

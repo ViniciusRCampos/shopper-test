@@ -7,7 +7,7 @@ type InputFileProps =  {
 }
 
 const InputFile = ({type}: InputFileProps) => {
-    const [uploadedFile, setUploadedFile] = useState<File | null>(null);
+    const [uploadedFile, setUploadedFile] = useState<File | null | ''>(null);
     const [isDisabled, setIsDisabled] = useState<boolean>(false);
     const [data, setData] = useState<any[] | null>(null);
     const [isHidden, setIsHidden] = useState<boolean>(true);
@@ -49,6 +49,12 @@ const InputFile = ({type}: InputFileProps) => {
             }
         }
     }
+
+    const updateOnDateBase = async () => {
+        await axios.post('http://localhost:3001/products/update', data)
+        localStorage.clear()
+        window.location.reload();
+    }
   return (
     <div className='container'>
         <label htmlFor='input' className='input_label'>Carregue o Arquivo CSV abaixo:</label>
@@ -64,7 +70,7 @@ const InputFile = ({type}: InputFileProps) => {
         disabled = {isDisabled}>Validar</button>
         {error && (<h1> Arquivo CSV com Erro de formatação </h1>)}
         <button 
-        // onClick={updateDateBase}
+        onClick={updateOnDateBase}
         className='btn_input_execute'
         hidden = {isHidden}>Executar</button>
         </div>

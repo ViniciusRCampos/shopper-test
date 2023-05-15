@@ -7,6 +7,7 @@ con.connect ((err: any) =>
     {
     if (err) {
         console.log (err)
+        return
     }
     else
     {

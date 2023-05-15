@@ -4,7 +4,6 @@ import IProducts from './IProducts'
 
 export default interface IServiceProducts{
     readAll(): Promise<Product[]>
-    readProductById(code: number): Promise<IProducts | null>
-    updateById(code:number): Promise<Product | null>
+    updateById(products: IProducts[]): Promise<Product[] | null | any[]>
     validateCSV(products: IData[]): Promise<IProducts[]>
 }

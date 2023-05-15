@@ -5,8 +5,7 @@
   "main": "index.ts",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start:dev": "npx nodemon",
-    "db:reset": "docker-compose exec db mysql -u root -p123456 shopper_db < /docker-entrypoint-initdb.d/database.sql"
+    "start:dev": "npx nodemon"
   },
   "keywords": [],
   "author": "",

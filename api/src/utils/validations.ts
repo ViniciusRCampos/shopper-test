@@ -63,3 +63,24 @@ export function validations(result: IProducts, new_price: number): IProducts{
     }
     return adjustment
         }
+
+export async function rulesValidations(result: IProducts, new_price: number, products: IData[]): Promise<IProducts>{
+    let error = ''
+    const pack = await packValidation(result);
+    if (pack && pack.length > 0) {
+      const isPack = isPackComplete(products, pack);
+      if (!isPack) {
+        error = 'O conjunto do produto não está na lista';
+        const data = ({ ...result, newPrice: new_price, error });
+        return data
+      }
+    }
+    const validate = validations(result, new_price);
+    if (validate) {
+        const data =(validate);
+        return data
+    } else {
+        const data = ({ ...result, newPrice: new_price });
+        return data
+    }
+}

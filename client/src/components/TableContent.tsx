@@ -21,12 +21,12 @@ const TableContent = ({data}: TableContentProps): ReactElement => {
     {result && (
         <table className='table_content'>
             <tr className='table_content_header'>
-                <th>code</th>
-                <th>name</th>
-                <th>costPrice</th>
-                <th>salesPrice</th>
-                <th>newPrice</th>
-                <th hidden={!existError}>error</th>
+                <th>Código</th>
+                <th>Nome</th>
+                <th>Custo</th>
+                <th>Valor</th>
+                <th>Novo Valor</th>
+                <th hidden={!existError}>Error</th>
             </tr>
             {result?.map((e)=> (
                 <tr 
@@ -35,9 +35,9 @@ const TableContent = ({data}: TableContentProps): ReactElement => {
                 >
                     <td>{e.code}</td>
                     <td>{e.name}</td>
-                    <td>{e.costPrice}</td>
-                    <td>{e.salesPrice}</td>
-                    <td>{e.newPrice}</td>
+                    <td>R$ {e.costPrice}</td>
+                    <td>R$ {e.salesPrice}</td>
+                    <td>R$ {e.newPrice}</td>
                     <td hidden={!existError} className='error'>{e.error}</td>
                 </tr>
             ))}
