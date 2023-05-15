@@ -16,13 +16,42 @@ Este é um projeto de uma ferramenta desenvolvida em Node.js (back-end) e React.
 ## Instalação
 
 * Clone este repositório em sua máquina.
+```bash
+git clone git@github.com:ViniciusRCampos/shopper-test.git
+```
 * Certifique-se de que o Docker esteja instalado e em execução.
 * No diretório raiz do projeto, execute o comando docker-compose up para iniciar o banco de dados MySQL.
+
+```bash
+docker compose up -d
+```
+
 * Acesse o diretório api e execute o comando npm install para instalar as dependências do back-end.
+```bash
+npm install
+```
 * Acesse o diretório client e execute o comando npm install para instalar as dependências do front-end.
+
+```bash
+npm install
+```
+
 * Após a instalação das dependências, execute npm run start:dev no diretório api para iniciar o servidor back-end.
+
+```bash
+#backend
+npm run start:dev
+```
+
 * Em outro terminal, execute npm start no diretório client para iniciar o aplicativo front-end.
+
+```bash
+#front-end
+npm run dev
+```
+
 * Acesse o aplicativo em seu navegador através do endereço http://localhost:5173.
+
 * No aplicativo, carregue o arquivo de precificação e clique no botão "VALIDAR" para iniciar a validação.
 * Após a validação, revise as informações exibidas e verifique se alguma regra foi violada.
 * Se todas as validações estiverem corretas, o botão "ATUALIZAR" será habilitado. Clique nele para atualizar os preços no banco de dados.
