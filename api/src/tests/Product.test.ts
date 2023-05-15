@@ -78,7 +78,7 @@ describe('Tests for Products Services and validations', () => {
               costPrice: 0,
               salesPrice: 0,
               newPrice: 10.0,
-              error: 'Produto não encontrado!',
+              error: 'Produto não encontrado',
             },]
 
             expect(result).to.deep.equal(expectedResult);
